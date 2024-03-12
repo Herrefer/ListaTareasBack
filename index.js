@@ -4,6 +4,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import enrutador from './src/routes/listaTareas.routes.js';
 
 
 console.log('Funciona todo correctamente (y)');
@@ -25,3 +26,4 @@ const __dirname= path.dirname(__filename);
 console.log(__dirname);
 app.use(express.static(path.join(__dirname,'/public')));
 
+app.use('/api', enrutador);
