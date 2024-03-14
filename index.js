@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import enrutador from './src/routes/listaTareas.routes.js';
+import './src/database/database.js'
 
 
 console.log('Funciona todo correctamente (y)');
