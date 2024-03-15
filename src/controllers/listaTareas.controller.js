@@ -59,7 +59,22 @@ export const borrarTarea = async (req, res) => {
   }
 };
 
-export const editarTarea = (req, res) => {
-  console.log("la funcion editarTarea funciona");
-  res.send("tu solicitud para editar tarea fué enviada correctamente");
+export const editarTarea = async (req, res) => {
+  try {
+    const tareaEncontrada = await Tarea.findById(req.params.id);
+    if (tareaEncontrada) {
+      await Tarea.findByIdAndUpdate(req.params.id, req.body);
+      res.status(200).json({
+        mensaje: "la tarea fué modificada con exito",
+      });
+    } else {
+      res.status(404).json({
+        mensaje: "La tarea que desea editar no existe o no fué encontrada",
+      });
+    }
+  } catch (error) {
+    res.status(400).json({
+      mensaje: "hubo un error al realizar la solicitud",
+    });
+  }
 };
