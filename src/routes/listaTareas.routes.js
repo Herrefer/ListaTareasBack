@@ -3,7 +3,7 @@ import { agregarTarea, borrarTarea, buscarTarea, editarTarea, listarTareas } fro
 
 const enrutador = Router();
 
-enrutador.route('/').get(listarTareas).post(agregarTarea).delete(borrarTarea).patch(editarTarea);
-enrutador.route('/:id').get(buscarTarea);
+enrutador.route('/').get(listarTareas).post(agregarTarea).patch(editarTarea);
+enrutador.route('/:id').get(buscarTarea).delete(borrarTarea);
 
 export default enrutador;
