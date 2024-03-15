@@ -27,17 +27,6 @@ export const agregarTarea = async(req, res) => {
         });
     };
 };
-
-export const borrarTarea = (req, res) => {
-    console.log('la funcion borrarTarea funciona');
-    res.send('tu solicitud para borrar tarea fué enviada correctamente')
-};
-
-export const editarTarea = (req, res) => {
-    console.log('la funcion editarTarea funciona');
-    res.send('tu solicitud para editar tarea fué enviada correctamente')
-};
-
 export const buscarTarea = async (req,res) =>{
     try{
         const tareaEncontrada = await Tarea.findById(req.params.id);
@@ -49,3 +38,13 @@ export const buscarTarea = async (req,res) =>{
         })
     }
 }
+
+export const borrarTarea = (req, res) => {
+    console.log('la funcion borrarTarea funciona');
+    res.send('tu solicitud para borrar tarea fué enviada correctamente')
+};
+
+export const editarTarea = (req, res) => {
+    console.log('la funcion editarTarea funciona');
+    res.send('tu solicitud para editar tarea fué enviada correctamente')
+};
