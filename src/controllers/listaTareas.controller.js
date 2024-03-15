@@ -31,10 +31,16 @@ export const buscarTarea = async (req, res) => {
   try {
     const tareaEncontrada = await Tarea.findById(req.params.id);
     console.log(tareaEncontrada);
-    res.status(200).json(tareaEncontrada);
+    if (tareaEncontrada) {
+      res.status(200).json(tareaEncontrada);
+    } else {
+      res.status(404).json({
+        mensaje: "la tarea buscada no existe o no fué encontrada",
+      });
+    }
   } catch (error) {
-    res.status(404).json({
-      mensaje: "la tarea buscada no existe o no fué encontrada",
+    res.status(400).json({
+      mensaje: "hubo un error al realizar la solicitud",
     });
   }
 };
