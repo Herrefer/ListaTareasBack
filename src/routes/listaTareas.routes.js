@@ -5,6 +5,5 @@ const enrutador = Router();
 
 enrutador.route('/').get(listarTareas).post(agregarTarea);
 enrutador.route('/:id').get(buscarTarea).delete(borrarTarea).put(editarTarea);
-enrutador.route('//buscar').get(buscarPorNombre);
 
 export default enrutador;
