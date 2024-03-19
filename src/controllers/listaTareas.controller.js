@@ -3,7 +3,6 @@ import Tarea from "../database/model/tareas.js";
 export const listarTareas = async (req, res) => {
   try {
     const listaDeTareas = await Tarea.find();
-    console.log(listaDeTareas);
     res.status(200).json(listaDeTareas);
   } catch (error) {
     res.status(400).json({
@@ -17,9 +16,7 @@ export const agregarTarea = async (req, res) => {
     const tareaNueva = new Tarea(req.body);
     await tareaNueva.save();
     await res.status(201).json(tareaNueva);
-    console.log(req.body);
   } catch (error) {
-    console.log(error);
     res.status(400).json({
       mensaje: "no se pudo procesar la solicitud 'agregarTarea'",
     });
@@ -28,7 +25,6 @@ export const agregarTarea = async (req, res) => {
 export const buscarTarea = async (req, res) => {
   try {
     const tareaEncontrada = await Tarea.findById(req.params.id);
-    console.log(tareaEncontrada);
     if (tareaEncontrada) {
       res.status(200).json(tareaEncontrada);
     } else {
@@ -46,9 +42,7 @@ export const buscarTarea = async (req, res) => {
 export const borrarTarea = async (req, res) => {
   try {
     const tareaEncontrada = await Tarea.findById(req.params.id);
-    console.log(tareaEncontrada);
     if (tareaEncontrada) {
-      console.log(tareaEncontrada + " es el objeto que vas a borrar");
       await Tarea.findByIdAndDelete(req.params.id);
       res.send("tarea " + tareaEncontrada.nombreTarea + " borrada");
     } else {
